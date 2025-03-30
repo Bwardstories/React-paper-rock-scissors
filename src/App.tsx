@@ -13,6 +13,10 @@ function App() {
   return (
     <div className="App">
       <p>Computer Move: {computerMove}</p>
+      <p>Player Move: {playerMove ? playerMove : ""}</p>
+      <button onClick={() => setPlayerMove("rock")}>Rock</button>
+      <button onClick={() => setPlayerMove("paper")}>Paper</button>
+      <button onClick={() => setPlayerMove("scissors")}>Scissors</button>
     </div>
   );
 }
