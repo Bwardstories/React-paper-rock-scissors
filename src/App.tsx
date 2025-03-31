@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './App.css';
 
-type Move = "rock" | "paper" | "scissors";
-const MOVES: readonly Move[] = ["rock", "paper", "scissors"];
+const MOVES = ["rock", "paper", "scissors"] as const;
+type Move = (typeof MOVES)[number];
 
 function App() {
   const [computerMove, setComputerMove] = useState<Move>(() => 
