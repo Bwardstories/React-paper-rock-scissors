@@ -1,18 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import './App.css'
 
-type Move = "rock" | "paper" | "scissors";
-const MOVES: readonly Move[] = ["rock", "paper", "scissors"];
+const MOVES = ['rock', 'paper', 'scissors'] as const
+type Move = (typeof MOVES)[number]
 
 function App() {
-  const [computerMove, setComputerMove] = React.useState<Move>("rock");
+  const [computerMove, setComputerMove] = useState<Move>(
+    () => MOVES[Math.floor(Math.random() * MOVES.length)],
+  )
+  const [playerMove, setPlayerMove] = useState<Move | null>(null)
+
   return (
     <div className="App">
-      Computer Move: {computerMove}
+      <p>Computer Move: {computerMove}</p>
+      <p>Player Move: {playerMove ?? playerMove}</p>
+      <button onClick={() => setPlayerMove('rock')}>Rock</button>
+      <button onClick={() => setPlayerMove('paper')}>Paper</button>
+      <button onClick={() => setPlayerMove('scissors')}>Scissors</button>
     </div>
-  );
+  )
 }
 
-
-export default App;
+export default App
